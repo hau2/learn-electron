@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Crypter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/building-electron-apps-with-js" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/electro-encryptor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/electron-chat-app-demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/electronshoppinglist" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reactjs-chat-demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/simple-samples" vcs="Git" />
+  </component>
+</project>

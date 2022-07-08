@@ -10,7 +10,6 @@
 </head>
 <body>
 <h1 class="text-center">Book Management</h1>
-<button class="btn btn-primary" onclick="hello()">Hello world</button>
 <div class="container">
     <div class="row">
         <div class="col col-12" id="bookList">
@@ -31,6 +30,7 @@
             </div>
             <div class="modal-body">
                 <table class="table">
+                    <input class="form-control" type="hidden" id="bookId">
                     <tr>
                         <td>Book name</td>
                         <td><input class="form-control" type="text" id="bookName"></td>
@@ -47,7 +47,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveBook();">Save changes</button>
             </div>
         </div>
     </div>

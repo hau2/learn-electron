@@ -28,11 +28,11 @@ function deleteBookById(id){
         })
 }
 
-function updateBook(book){
-    axios.put(API_URL, {
-        bookId: book.bookId,
-        bookName: book.bookName,
-        bookPrice: book.bookPrice
+function updateBook({bookId, bookName, bookPrice, bookImage}){
+    axios.put(API_URL+`${bookId}`, {
+        bookId: bookId,
+        bookName: bookName,
+        bookPrice: bookPrice
     }).then(()=>{
         console.log('update success')
     }).catch(()=>{
@@ -63,7 +63,7 @@ async function renderBookList(){
         <td>${bookList[i].id}</td>
         <td>${bookList[i].bookName}</td>
         <td>${bookList[i].bookPrice}</td>
-        <td><button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning" onclick="_edit(${bookList[i].id})">Edit</button></td>
+        <td><button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning" onclick="openFormEdit(${bookList[i].id})">Edit</button></td>
         <td><button class="btn btn-danger" onclick="_delete(${bookList[i].id})">Delete</button></td>
         </tr>
         `
@@ -71,8 +71,9 @@ async function renderBookList(){
     bookTable += '</tbody><table/>';
     bookListElement.innerHTML = bookTable;
 }
-async function _edit(bookId){
+async function openFormEdit(bookId){
     let book = await findBookById(bookId);
+    document.getElementById('bookId').value = bookId;
     document.getElementById('bookName').value = book.bookName;
     document.getElementById('bookPrice').value = book.bookPrice;
     document.getElementById('bookImage').value = book.bookImage;
@@ -80,4 +81,21 @@ async function _edit(bookId){
 async function _delete(id){
     await deleteBookById(id);
     await renderBookList();
+}
+async function _edit(book){
+    updateBook(book);
+    renderBookList();
+}
+function saveBook(){
+    let bookId = document.getElementById('bookId').value;
+    let bookName = document.getElementById('bookName').value;
+    let bookPrice = document.getElementById('bookPrice').value;
+    let bookImage = document.getElementById('bookImage').value;
+
+    _edit({
+        bookId: bookId,
+        bookName: bookName,
+        bookPrice: bookPrice,
+        bookImage: bookImage
+    })
 }
